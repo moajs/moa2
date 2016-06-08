@@ -28,7 +28,7 @@ app.use(log4js.koaLogger(log4js.getLogger('http'), { level: 'auto' }))
 
 app.use(api())
 
-app.use(views(__dirname + '/app/views', {
+app.use(views(path.join(__dirname, 'app/views'), {
   extension: 'jade'
 }))
 
