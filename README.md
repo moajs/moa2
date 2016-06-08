@@ -1,7 +1,7 @@
 # Moa 2 = Moa with koa 2
 
 
-Moa2 is a open-source web framework based koa、mongoose、bluebird、ava that’s optimized
+Moa2 is a open-source web framework based koa 2.x、mongoose、bluebird、ava that’s optimized
 for programmer happiness and sustainable productivity. It lets you
 write beautiful code by favoring convention over configuration.
 
