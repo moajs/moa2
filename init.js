@@ -1,26 +1,25 @@
-var fs = require('fs')
-  , log4js = require('koa-log4')
-  , log_path = 'logs'
-  , is_exist = fs.existsSync(log_path)
-  , log = log4js.getLogger("moa-api");
+'use strict'
+
+const fs = require('fs')
+const logPath = 'logs'
 
 /**
  * 创建log目录
- */ 
-function _create_log_dir(log_path){
-  var is_exist = fs.existsSync(log_path);
-  
-  if (is_exist !== true) {
-    console.log('log_path is not exist, create folder:' + log_path);
-    fs.mkdirSync(log_path);
+ */
+function _createLogDirectory (logPath) {
+  var isExist = fs.existsSync(logPath)
+
+  if (isExist !== true) {
+    console.log('log_path is not exist, create folder:' + logPath)
+    fs.mkdirSync(logPath)
   } else {
-    console.log('log_path is exist, no operation!');
+    console.log('log_path is exist, no operation!')
   }
 }
 
-function main(){
-  _create_log_dir(log_path);
+function main () {
+  _createLogDirectory(logPath)
 }
 
 // 程序入口
-main();
+main()
