@@ -108,9 +108,7 @@ npm run async
 
 ## 版本历史
 
-- v1.0.0 使用base2作为微内核，移除之前express用的依赖
-- v0.1.2 增加log4js作为日志管理
-- v0.1.0 初始化版本，以express为基础，做的express最佳事件
+- v1.0.0 初始化版本，以Koa 2.x为基础
 
 ## 欢迎fork和反馈
 
