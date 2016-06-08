@@ -1,4 +1,4 @@
-# Moa 2 = Moa with koa 2
+# Moa 2 = Moajs with koa 2.x
 
 
 Moa2 is a open-source web framework based koa 2.x、mongoose、bluebird、ava that’s optimized
