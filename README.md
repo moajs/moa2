@@ -64,6 +64,7 @@ Install `moag` as Moajs scaffold
 ```
 $ [sudo] npm install --global moag
 $ cd <your-project-name>
+$ moag <model-name> name:string password:string -k
 ```
 
 - for koa 2 common function
