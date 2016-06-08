@@ -121,6 +121,6 @@ License](http://www.opensource.org/licenses/MIT).
 
 
 [npm-image]: https://img.shields.io/npm/v/moa2.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/moajs
+[npm-url]: https://npmjs.org/package/moa2
 [gitter-image]: https://badges.gitter.im/Join%20Chat.svg
 [gitter-url]: https://gitter.im/moajs/moa2?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
