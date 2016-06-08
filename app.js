@@ -44,12 +44,12 @@ app.use((ctx, next) => {
 
 // router.use('/', index.routes())
 // router.use('/users', users.routes())
-mountRoutes(app, __dirname + '/app/routes', true)
+mountRoutes(app, path.join(__dirname, 'app/routes'), true)
 
 app.use(router.routes(), router.allowedMethods())
 
 // response
-app.on('error', function(err, ctx){
+app.on('error', function (err, ctx) {
   console.log(err)
   logger.error('server error', err, ctx)
 })
