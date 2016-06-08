@@ -22,11 +22,10 @@ app.use(bodyparser)
 app.use(json())
 app.use(logger())
 app.use(serve(path.join(__dirname, 'public')))
+app.use(api())
 
 log4js.configure('config/log4js.json', { reloadSecs: 300 })
 app.use(log4js.koaLogger(log4js.getLogger('http'), { level: 'auto' }))
-
-app.use(api())
 
 app.use(views(path.join(__dirname, 'app/views'), {
   extension: 'jade'
@@ -42,10 +41,8 @@ app.use((ctx, next) => {
   })
 })
 
-// router.use('/', index.routes())
-// router.use('/users', users.routes())
-mountRoutes(app, path.join(__dirname, 'app/routes'), true)
-
+// mount routes from app/routes folder
+mountRoutes(app, path.join(__dirname, 'app/routes'), false)
 app.use(router.routes(), router.allowedMethods())
 
 // response
