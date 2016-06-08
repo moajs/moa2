@@ -1,5 +1,9 @@
-var router = require('koa-router')();
+"use strict";
 
+var router = require('koa-router')();
+const co = require('co');
+
+// var res_api       = require('res.api');
 var $ = require('mount-controllers')(__dirname).users_controller;
 
 var $middlewares  = require('mount-middlewares')(__dirname);

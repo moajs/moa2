@@ -1,5 +1,7 @@
+"use strict";
+
 /**
- * Created by Moajs on June 8th 2016, 12:55:48 am.
+ * Created by Moajs on June 8th 2016, 8:57:06 pm.
  */
  
 var $models = require('mount-models')(__dirname);
@@ -10,11 +12,13 @@ var User = $models.user;
 exports.list = (ctx, next) => {
   console.log(ctx.method + ' /users => list, query: ' + JSON.stringify(ctx.query));
 
-  return User.getAllAsync().then((users)=>{
+  return User.getAllAsync().then(( users)=>{
     return ctx.render('users/index', {
       users : users
     })
-  })
+  }).catch((err)=>{
+      return ctx.api_error(err);
+  });
 };
 
 exports.new = (ctx, next) => {
@@ -32,11 +36,13 @@ exports.show = (ctx, next) => {
     ', params: ' + JSON.stringify(ctx.params));
   var id = ctx.params.id;
 
-  return User.getByIdAsync(id).then(function(user){
+  return User.getByIdAsync(id).then( user => {
     console.log(user);
     return ctx.render('users/show', {
       user : user
     })
+  }).catch((err)=>{
+      return ctx.api_error(err);
   });
 };
 
@@ -46,13 +52,15 @@ exports.edit = (ctx, next) => {
 
   var id = ctx.params.id;
 
-  return User.getById(id, function(err, user){
+  return User.getByIdAsync(id).then( user => {
     console.log(user);
     user._action = 'edit';
 
     return ctx.render('users/edit', {
       user : user
     })
+  }).catch((err)=>{
+      return ctx.api_error(err);
   });
 };
 
@@ -60,12 +68,14 @@ exports.create = (ctx, next) => {
   console.log(ctx.method + ' /users => create, query: ' + JSON.stringify(ctx.query) +
     ', params: ' + JSON.stringify(ctx.params) + ', body: ' + JSON.stringify(ctx.request.body));
 
-    return User.createAsync({name: req.body.name,password: req.body.password}).then( user => {
-      console.log(user);
-      return ctx.render('users/show', {
-        user : user
-      })
+  return User.createAsync({username: ctx.request.body.username,password: ctx.request.body.password,avatar: ctx.request.body.avatar,phone_number: ctx.request.body.phone_number,address: ctx.request.body.address}).then( user => {
+    console.log(user);
+    return ctx.render('users/show', {
+      user : user
     })
+  }).catch((err)=>{
+      return ctx.api_error(err);
+  });
 };
 
 exports.update = (ctx, next) => {
@@ -74,7 +84,7 @@ exports.update = (ctx, next) => {
 
     var id = ctx.params.id;
 
-    return User.updateById(id,{name: req.body.name,password: req.body.password}).then( user => {
+    return User.updateById(id,{username: ctx.request.body.username,password: ctx.request.body.password,avatar: ctx.request.body.avatar,phone_number: ctx.request.body.phone_number,address: ctx.request.body.address}).then( user => {
       console.log(user);
 
       return ctx.body = ({
@@ -136,7 +146,7 @@ exports.api = {
   create: (ctx, next) => {
     var user_id = ctx.api_user._id;
 
-    return User.createAsync({name: req.body.name,password: req.body.password}).then(user=> {
+    return User.createAsync({username: ctx.request.body.username,password: ctx.request.body.password,avatar: ctx.request.body.avatar,phone_number: ctx.request.body.phone_number,address: ctx.request.body.address}).then(user=> {
       return ctx.body = ({
         user : user
       })
@@ -148,7 +158,7 @@ exports.api = {
   update: (ctx, next) => {
     var user_id = ctx.api_user._id;
     var id = ctx.params.user_id;
-    return User.updateByIdAsync(id, {name: req.body.name,password: req.body.password}).then(user=> {
+    return User.updateByIdAsync(id, {username: ctx.request.body.username,password: ctx.request.body.password,avatar: ctx.request.body.avatar,phone_number: ctx.request.body.phone_number,address: ctx.request.body.address}).then(user=> {
       return ctx.api({
         user : user,
         redirect : '/users/' + id
