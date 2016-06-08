@@ -4,7 +4,6 @@ require('./init')
 require('./db')
 
 var log4js        = require('koa-log4'); 
-var res_api       = require('res.api');
 var log           = log4js.getLogger("moa-api");
 var res_api       = require('koa.res.api');
 
