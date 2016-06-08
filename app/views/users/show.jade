@@ -1,0 +1,13 @@
+extends ../layouts/layout
+
+block content
+  p#notice
+
+  each n in ['user.username','user.password','user.avatar','user.phone_number','user.address']
+    p
+      strong #{n.split('.')[1]}:
+      span #{eval(n)}
+
+  a(href='/users/#{ user._id}/edit') Edit
+  span |
+  a(href='/users') Back

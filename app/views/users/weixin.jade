@@ -1,0 +1,11 @@
+extends ../layout.mobile
+
+block yield
+	.user-form
+		div.user-form-title 微信用户绑定
+		//form(action='/user/register', method='POST')
+		div.form-line
+			input#username(type='text', name='username', placeholder='请输入用户名', value='kezhi')
+		div.form-line
+			input#userpwd(type='password', name='password', placeholder='请输入密码', value='111111')
+		input#registerAndUpdate.btn-style(type='button', value='保  存')

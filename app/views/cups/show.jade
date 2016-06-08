@@ -1,0 +1,13 @@
+extends ../layouts/layout
+
+block content
+  p#notice
+
+  each n in ['cup.name','cup.password']
+    p
+      strong #{n.split('.')[1]}:
+      span #{eval(n)}
+
+  a(href='/cups/#{ cup._id}/edit') Edit
+  span |
+  a(href='/cups') Back

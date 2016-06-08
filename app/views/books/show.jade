@@ -1,0 +1,13 @@
+extends ../layouts/layout
+
+block content
+  p#notice
+
+  each n in ['book.name','book.password']
+    p
+      strong #{n.split('.')[1]}:
+      span #{eval(n)}
+
+  a(href='/books/#{ book._id}/edit') Edit
+  span |
+  a(href='/books') Back

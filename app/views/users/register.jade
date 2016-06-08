@@ -1,0 +1,13 @@
+extends ../layouts/layout
+
+block content
+  .user-form
+    div.user-form-title 用户注册
+    form(action='/users/register', method='POST')
+      div.form-line
+        input#username(type='text', name='username', placeholder='请输入用户名', value='kezhi')
+      div.form-line
+        input#userpwd(type='password', name='password', placeholder='请输入密码', value='111111')
+      input#register.btn-style(type='submit', value='注  册')
+      .form-tip 已有帐号？请 
+        a(href="/users/login")登录

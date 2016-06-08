@@ -1,0 +1,11 @@
+extends ../layouts/layout
+
+block content
+  h1 Editing book
+
+  include book
+
+  a(href='/books/#{ book._id}') Show
+  span |
+  a(href='/books') Back
+

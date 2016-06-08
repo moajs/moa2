@@ -1,0 +1,11 @@
+extends ../layouts/layout
+
+block content
+  h1 Editing cup
+
+  include cup
+
+  a(href='/cups/#{ cup._id}') Show
+  span |
+  a(href='/cups') Back
+
