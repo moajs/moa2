@@ -52,6 +52,11 @@ Koa 2支持3种中间件，其中async/await需要babel支持，根据[koa、koa
 - user 是common function
 - student 是GeneratorFunction
 
+浏览器里访问地址
+
+- http://127.0.0.1:3000/users
+- http://127.0.0.1:3000/students
+
 ## 使用脚手架
 
 Install `moag` as Moajs scaffold
