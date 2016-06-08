@@ -16,14 +16,13 @@
     "jade": "~1.11.0",
     "jsonwebtoken": "^5.0.4",
     "koa": "^2.0.0",
-    "koa-bodyparser": "^2.0.1",
+    "koa-bodyparser": "^3.1.0",
     "koa-convert": "^1.2.0",
-    "koa-json": "^1.1.1",
+    "koa-json": "^2.0.2",
     "koa-log4": "^2.0.1",
-    "koa-logger": "^1.3.0",
-    "koa-onerror": "^1.2.1",
+    "koa-logger": "^2.0.0",
     "koa-router": "^7.0.0",
-    "koa-static": "^1.5.2",
+    "koa-static": "^3.0.0",
     "koa-views": "^5.0.1",
     "koa.res.api": "^2.0.0",
     "kp": "^1.1.0",
@@ -42,6 +41,12 @@
     "ava": "^0.15.2",
     "gulp": "^3.9.0",
     "superkoa": "^1.0.0",
-    "supervisor": "^0.7.1"
+    "supervisor": "^0.7.1",
+    "standard": "*"
+  },
+  "standard": {
+    "ignore": [
+      "app/"
+    ]
   }
 }
