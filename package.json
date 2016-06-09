@@ -2,9 +2,11 @@
   "name": "moa2",
   "version": "1.0.1",
   "private": false,
+  "description": "Koa web app framework",
   "scripts": {
     "start": "./node_modules/.bin/supervisor ./bin/www",
     "async": "./node_modules/.bin/supervisor ./bin/run",
+    "test": "./node_modules/.bin/ava -v",
     "test": "./node_modules/.bin/ava -v"
   },
   "dependencies": {
@@ -42,6 +44,10 @@
     "superkoa": "^1.0.0",
     "supervisor": "^0.7.1",
     "standard": "*"
+  },
+  "repository": "moajs/moa2",
+  "engines": {
+    "node": ">= 4.0"
   },
   "standard": {
     "ignore": [
