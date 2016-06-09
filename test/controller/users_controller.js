@@ -1,47 +1,47 @@
-import test from 'ava';
+import test from 'ava'
 
 var superkoa = require('superkoa')
 
 var model = 'users'
 
-test.cb("GET /api/" + model, t => {
+test.cb('GET /api/' + model, t => {
   superkoa('../../app.js')
-    .get("/api/" + model)
+    .get('/api/' + model)
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
-    .expect(200, t.end);
-});
- 
-test.cb("POST /api/" + model, t => {
+    .expect(200, t.end)
+})
+
+test.cb('POST /api/' + model, t => {
   superkoa('../../app.js')
-    .post("/api/" + model)
+    .post('/api/' + model)
     .field('username', 'my awesome avatar')
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
-    .expect(200, t.end);
-});
+    .expect(200, t.end)
+})
 
-test.cb("GET /api/" + model + '/:user_id', t => {
+test.cb('GET /api/' + model + '/:user_id', t => {
   superkoa('../../app.js')
-    .get("/api/" + model + '/:user_id')
+    .get('/api/' + model + '/:user_id')
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
-    .expect(200, t.end);
-});
+    .expect(200, t.end)
+})
 
-test.cb("PATCH /api/" + model + '/:user_id', t => {
+test.cb('PATCH /api/' + model + '/:user_id', t => {
   superkoa('../../app.js')
-    .patch("/api/" + model + '/:user_id')
+    .patch('/api/' + model + '/:user_id')
     .field('username', 'my awesome avatar')
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
-    .expect(200, t.end);
-});
+    .expect(200, t.end)
+})
 
-test.cb("GET /api/" + model + '/:user_id', t => {
+test.cb('GET /api/' + model + '/:user_id', t => {
   superkoa('../../app.js')
-    .delete("/api/" + model + '/:user_id')
+    .delete('/api/' + model + '/:user_id')
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
-    .expect(200, t.end);
-});
+    .expect(200, t.end)
+})
