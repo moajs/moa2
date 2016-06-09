@@ -5,7 +5,7 @@ var superkoa = require('superkoa')
 var model = 'users'
 
 test.cb("GET /api/" + model, t => {
-  superkoa()
+  superkoa('../../app.js')
     .get("/api/" + model)
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
@@ -13,7 +13,7 @@ test.cb("GET /api/" + model, t => {
 });
  
 test.cb("POST /api/" + model, t => {
-  superkoa()
+  superkoa('../../app.js')
     .post("/api/" + model)
     .field('username', 'my awesome avatar')
     .set('Accept', 'application/json')
@@ -22,7 +22,7 @@ test.cb("POST /api/" + model, t => {
 });
 
 test.cb("GET /api/" + model + '/:user_id', t => {
-  superkoa()
+  superkoa('../../app.js')
     .get("/api/" + model + '/:user_id')
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
@@ -30,7 +30,7 @@ test.cb("GET /api/" + model + '/:user_id', t => {
 });
 
 test.cb("PATCH /api/" + model + '/:user_id', t => {
-  superkoa()
+  superkoa('../../app.js')
     .patch("/api/" + model + '/:user_id')
     .field('username', 'my awesome avatar')
     .set('Accept', 'application/json')
@@ -39,7 +39,7 @@ test.cb("PATCH /api/" + model + '/:user_id', t => {
 });
 
 test.cb("GET /api/" + model + '/:user_id', t => {
-  superkoa()
+  superkoa('../../app.js')
     .delete("/api/" + model + '/:user_id')
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)

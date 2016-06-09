@@ -24,7 +24,7 @@ app.use(logger())
 app.use(serve(path.join(__dirname, 'public')))
 app.use(api())
 
-log4js.configure('config/log4js.json', { reloadSecs: 300 })
+log4js.configure(path.join(__dirname, 'config/log4js.json'), { reloadSecs: 300 })
 app.use(log4js.koaLogger(log4js.getLogger('http'), { level: 'auto' }))
 
 app.use(views(path.join(__dirname, 'app/views'), {
