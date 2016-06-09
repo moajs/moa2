@@ -6,7 +6,6 @@
   "scripts": {
     "start": "./node_modules/.bin/supervisor ./bin/www",
     "async": "./node_modules/.bin/supervisor ./bin/run",
-    "test": "./node_modules/.bin/ava -v",
     "test": "./node_modules/.bin/ava -v"
   },
   "dependencies": {
@@ -15,7 +14,7 @@
     "debug": "^2.2.0",
     "ioredis": "^1.9.1",
     "is": "^3.1.0",
-    "jade": "~1.11.0",
+    "jade": "^1.11.0",
     "jsonwebtoken": "^5.0.4",
     "koa": "^2.0.0",
     "koa-bodyparser": "^3.1.0",
