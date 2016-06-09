@@ -45,7 +45,8 @@
   },
   "standard": {
     "ignore": [
-      "app/"
+      "app/",
+      "public/**/*"
     ]
   }
 }
