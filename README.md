@@ -8,6 +8,8 @@ write beautiful code by favoring convention over configuration.
 [![gitter][gitter-image]][gitter-url]
 [![NPM version][npm-image]][npm-url]
 
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
+
 ![](doc/moa.jpg)
 
 > "Lost, like the Moa is lost" - Maori proverb
