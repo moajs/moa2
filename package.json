@@ -51,6 +51,7 @@
     "node": ">= 4.0"
   },
   "standard": {
+    "globals": ["log", "info", "warn", "error", "dir", "time", "timeEnd", "trace", "assert"],
     "ignore": [
       "app/",
       "public/**/*"
