@@ -1,5 +1,5 @@
 'use strict'
-require('log1')
+
 require('./config/log.js')
 
 const mongoose = require('mongoose')

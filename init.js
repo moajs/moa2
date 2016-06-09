@@ -1,5 +1,7 @@
 'use strict'
 
+require('./config/log.js')
+
 const fs = require('fs')
 const path = require('path')
 const logPath = path.join(__dirname, 'logs')
@@ -11,10 +13,10 @@ function _createLogDirectory (logPath) {
   var isExist = fs.existsSync(logPath)
 
   if (isExist !== true) {
-    console.log('log_path is not exist, create folder:' + logPath)
+    log('log_path is not exist, create folder:' + logPath)
     fs.mkdirSync(logPath)
   } else {
-    console.log('log_path is exist, no operation!')
+    log('log_path is exist, no operation!')
   }
 }
 
