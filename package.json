@@ -45,6 +45,7 @@
     "supervisor": "^0.7.1",
     "standard": "*"
   },
+  "license": "MIT",
   "repository": "moajs/moa2",
   "engines": {
     "node": ">= 4.0"
