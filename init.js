@@ -1,7 +1,8 @@
 'use strict'
 
 const fs = require('fs')
-const logPath = 'logs'
+const path = require('path')
+const logPath = path.join(__dirname, 'logs')
 
 /**
  * 创建log目录

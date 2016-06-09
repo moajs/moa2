@@ -20,12 +20,18 @@ const app = new Koa()
 // middlewares
 app.use(bodyparser)
 app.use(json())
-app.use(logger())
+
 app.use(serve(path.join(__dirname, 'public')))
 app.use(api())
 
-log4js.configure(path.join(__dirname, 'config/log4js.json'), { reloadSecs: 300 })
-app.use(log4js.koaLogger(log4js.getLogger('http'), { level: 'auto' }))
+if (process.env.NODE_ENV === 'production') {
+  log4js.configure(path.join(__dirname, 'config/log4js.json'), { reloadSecs: 300 })
+  app.use(log4js.koaLogger(log4js.getLogger('http'), { level: 'auto' }))  
+}
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(logger())  
+}
 
 app.use(views(path.join(__dirname, 'app/views'), {
   extension: 'jade'

@@ -26,6 +26,7 @@
     "koa-views": "^5.0.1",
     "koa.res.api": "^2.0.0",
     "kp": "^1.1.0",
+    "log1": "^1.0.7",
     "mongoose": "4.0.5",
     "mongoosedao": "^2.0.2",
     "morgan": "~1.6.1",

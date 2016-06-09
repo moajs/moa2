@@ -1,20 +1,22 @@
 'use strict'
 
-var connectionString, mongoose, options
-mongoose = require('mongoose')
+require('log1')
 
-var config = require('./config/mongodb')
-var port = config.port
+const mongoose = require('mongoose')
+
+var connectionString, options
+const config = require('./config/mongodb')
+const port = config.port
 var db = config.db
 var host
 
-var isDebug = config.is_debug
+const isDebug = config.is_debug
 
 if (isDebug) {
-  console.log('提醒:debug状态连接数据库:')
+  log('提醒:debug状态连接数据库:')
   host = config.host
 } else {
-  console.log('警告:非debug状态连接数据库:')
+  log('警告:非debug状态连接数据库:')
   host = config.host
 }
 
@@ -30,23 +32,23 @@ options = {
   }
 }
 
-console.log(connectionString)
+log(connectionString)
 
 mongoose.connect(connectionString, options, function (err, res) {
   if (err) {
-    console.log('[mongoose log] Error connecting to: ', +connectionString + '. ' + err)
+    log('[mongoose log] Error connecting to: ', +connectionString + '. ' + err)
     return process.exit(1)
   } else {
-    return console.log('[mongoose log] Successfully connected to: ', +connectionString)
+    return log('[mongoose log] Successfully connected to: ', +connectionString)
   }
 })
 
 db = mongoose.connection
 
-db.on('error', console.error.bind(console, 'mongoose connection error:'))
+db.on('error', error.bind(console, 'mongoose connection error:'))
 
 db.once('open', function () {
-  return console.log('mongoose open success')
+  return log('mongoose open success')
 })
 
 module.exports = db
