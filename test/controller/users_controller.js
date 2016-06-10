@@ -31,12 +31,35 @@ test.cb('GET /' + model, t => {
     })
 })
 
+// *  GET    /users/new       => user.new()
+test.cb('GET /' + model + '/new', t => {
+  superkoa('../../app.js')
+    .get('/' + model + '/new')
+    .end(function (err, res) {
+      t.ifError(err)
+      t.is(200, res.status)
+      t.regex(res.text, /New\suser/)
+      t.end()
+    })
+})
+
+// *  GET    /users/:id       => user.show()
+// test.cb('GET /' + model + '/:id', t => {
+//   superkoa('../../app.js')
+//     .get('/' + model + '/')
+//     .end(function (err, res) {
+//       t.ifError(err)
+//       t.is(200, res.status)
+//       t.regex(res.text, /New\suser/)
+//       t.end()
+//     })
+// })
+
 test.cb('POST /' + model, t => {
   superkoa('../../app.js')
     .post('/' + model)
     .field('username', 'my awesome avatar')
-    .set('Accept', 'application/json')
-    .expect('Content-Type', /json/)
+    .expect('Content-Type', /text\/html/)
     .end(function (err, res) {
       t.ifError(err)
       t.is(200, res.status)

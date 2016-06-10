@@ -43,7 +43,9 @@
     "gulp": "^3.9.0",
     "superkoa": "^1.0.0",
     "supervisor": "^0.7.1",
-    "standard": "*"
+    "standard": "*",
+    "sinon": "^1.11.1",
+    "zombie": "^2.1.1"
   },
   "license": "MIT",
   "repository": "moajs/moa2",
