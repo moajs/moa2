@@ -5,19 +5,19 @@ var model = 'users'
 
 var user
 
+var mockUser = {
+  // 'username': 'alfred',
+  // 'password': '000000'
+}
+
 test.before(function * (t) {
   var res = yield superkoa('../../app.js')
     .post('/api/' + model)
-    .send({
-      'username': 'alfred',
-      'password': '000000'
-    })
+    .send(mockUser)
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
 
   user = res.body.user
-
-  // console.log(user)
 
   t.is(200, res.status)
 })
@@ -59,15 +59,12 @@ test('GET /' + model + '/new', function * (t) {
 test('GET /' + model + '/:id show', function * (t) {
   var res1 = yield superkoa('../../app.js')
     .post('/api/' + model)
-    .send({
-      'username': 'alfred',
-      'password': '000000'
-    })
+    .send(mockUser)
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
 
   user = res1.body.user
-  
+
   var res = yield superkoa('../../app.js')
     .get('/' + model + '/' + user._id)
 
@@ -79,19 +76,15 @@ test('GET /' + model + '/:id show', function * (t) {
 test('GET /' + model + '/:id/edit', function * (t) {
   var res1 = yield superkoa('../../app.js')
     .post('/api/' + model)
-    .send({
-      'username': 'alfred',
-      'password': '000000'
-    })
+    .send(mockUser)
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
 
   user = res1.body.user
-    
+
   var res = yield superkoa('../../app.js')
     .get('/' + model + '/' + user._id + '/edit')
 
-  // console.log(res)
   t.is(200, res.status)
   t.regex(res.text, /Editing\suser/)
 })
@@ -100,10 +93,7 @@ test('GET /' + model + '/:id/edit', function * (t) {
 test('POST /' + model, function * (t) {
   var res = yield superkoa('../../app.js')
     .post('/' + model)
-    .send({
-      'username': 'alfred',
-      'password': '000000'
-    })
+    .send(mockUser)
 
   t.is(200, res.status)
   t.regex(res.text, /Edit/)
@@ -126,15 +116,12 @@ test('PATCH /' + model + '/:id update', function * (t) {
 test('DELETE /' + model + '/:id destroy', function * (t) {
   var res1 = yield superkoa('../../app.js')
     .post('/api/' + model)
-    .send({
-      'username': 'alfred',
-      'password': '000000'
-    })
+    .send(mockUser)
     .set('Accept', 'application/json')
     .expect('Content-Type', /json/)
 
   user = res1.body.user
-  
+
   var res = yield superkoa('../../app.js')
     .del('/' + model + '/' + user._id)
 
