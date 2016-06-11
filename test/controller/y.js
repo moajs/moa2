@@ -17,7 +17,7 @@ test.before(function * (t) {
 
   user = res.body.user
 
-  console.log(user)
+  // console.log(user)
 
   t.is(200, res.status)
 })
@@ -57,6 +57,17 @@ test('GET /' + model + '/new', function * (t) {
 
 // *  GET    /users/:id       => user.show()
 test('GET /' + model + '/:id show', function * (t) {
+  var res1 = yield superkoa('../../app.js')
+    .post('/api/' + model)
+    .send({
+      'username': 'alfred',
+      'password': '000000'
+    })
+    .set('Accept', 'application/json')
+    .expect('Content-Type', /json/)
+
+  user = res1.body.user
+  
   var res = yield superkoa('../../app.js')
     .get('/' + model + '/' + user._id)
 
@@ -66,9 +77,21 @@ test('GET /' + model + '/:id show', function * (t) {
 
 // *  GET    /users/:id/edit  => user.edit()
 test('GET /' + model + '/:id/edit', function * (t) {
+  var res1 = yield superkoa('../../app.js')
+    .post('/api/' + model)
+    .send({
+      'username': 'alfred',
+      'password': '000000'
+    })
+    .set('Accept', 'application/json')
+    .expect('Content-Type', /json/)
+
+  user = res1.body.user
+    
   var res = yield superkoa('../../app.js')
     .get('/' + model + '/' + user._id + '/edit')
 
+  // console.log(res)
   t.is(200, res.status)
   t.regex(res.text, /Editing\suser/)
 })
@@ -81,8 +104,6 @@ test('POST /' + model, function * (t) {
       'username': 'alfred',
       'password': '000000'
     })
-    .set('Accept', 'application/json')
-    .expect('Content-Type', /json/)
 
   t.is(200, res.status)
   t.regex(res.text, /Edit/)
@@ -103,6 +124,17 @@ test('PATCH /' + model + '/:id update', function * (t) {
 
 // *  DELETE /users/:id       => user.destroy()
 test('DELETE /' + model + '/:id destroy', function * (t) {
+  var res1 = yield superkoa('../../app.js')
+    .post('/api/' + model)
+    .send({
+      'username': 'alfred',
+      'password': '000000'
+    })
+    .set('Accept', 'application/json')
+    .expect('Content-Type', /json/)
+
+  user = res1.body.user
+  
   var res = yield superkoa('../../app.js')
     .del('/' + model + '/' + user._id)
 

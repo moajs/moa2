@@ -69,7 +69,6 @@ exports.create = (ctx, next) => {
     ', params: ' + JSON.stringify(ctx.params) + ', body: ' + JSON.stringify(ctx.request.body));
 
   return User.createAsync({username: ctx.request.body.username,password: ctx.request.body.password,avatar: ctx.request.body.avatar,phone_number: ctx.request.body.phone_number,address: ctx.request.body.address}).then( user => {
-    console.log(user);
     return ctx.render('users/show', {
       user : user
     })
