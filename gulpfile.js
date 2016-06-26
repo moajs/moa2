@@ -1,26 +1,25 @@
 'use strict'
 
+const Koa = require('koa')
 const path = require('path')
 const gulp = require('gulp')
-const mocha = require('gulp-mocha')
-const mount = require('mount-routes')
+const ava = require('gulp-ava')
+const mount = require('mount-koa-routes')
 
 const sourcePath = ['test/**/*.js', 'lib/*.js']
 
 gulp.task('watch', function () {
-  gulp.watch(sourcePath, ['mocha'])
+  gulp.watch(sourcePath, ['ava'])
 })
 
-gulp.task('mocha', function () {
+gulp.task('ava', function () {
   return gulp.src(sourcePath, {read: false})
-    // gulp-mocha needs filepaths so you can't have any plugins before it
-    .pipe(mocha({reporter: 'spec'}))
+    // gulp-ava needs filepaths so you can't have any plugins before it
+    .pipe(ava())
 })
 
 gulp.task('routes', function () {
-  let express = require('express')
-  let app = express()
-
+  const app = new Koa()
   // mount routes
   mount(app, path.join(__dirname, 'app/routes'), true)
 })
@@ -33,4 +32,4 @@ gulp.task('kp', function () {
   kp(3000, pre)
 })
 
-gulp.task('default', ['mocha', 'watch'])
+gulp.task('default', ['ava', 'watch'])

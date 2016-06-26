@@ -41,10 +41,11 @@
   "devDependencies": {
     "ava": "^0.15.2",
     "gulp": "^3.9.0",
+    "gulp-ava": "^0.12.1",
+    "sinon": "^1.11.1",
+    "standard": "*",
     "superkoa": "^1.0.0",
     "supervisor": "^0.7.1",
-    "standard": "*",
-    "sinon": "^1.11.1",
     "zombie": "^2.1.1"
   },
   "license": "MIT",
@@ -53,7 +54,17 @@
     "node": ">= 4.0"
   },
   "standard": {
-    "globals": ["log", "info", "warn", "error", "dir", "time", "timeEnd", "trace", "assert"],
+    "globals": [
+      "log",
+      "info",
+      "warn",
+      "error",
+      "dir",
+      "time",
+      "timeEnd",
+      "trace",
+      "assert"
+    ],
     "ignore": [
       "app/",
       "public/**/*"
