@@ -12,8 +12,8 @@ gulp.task('watch', function () {
   gulp.watch(sourcePath, ['ava'])
 })
 
-gulp.task('ava', function () {
-  return gulp.src(sourcePath, {read: false})
+gulp.task('test', function () {
+  return gulp.src('test/**/*.js')
     // gulp-ava needs filepaths so you can't have any plugins before it
     .pipe(ava())
 })
@@ -32,4 +32,4 @@ gulp.task('kp', function () {
   kp(3000, pre)
 })
 
-gulp.task('default', ['ava', 'watch'])
+gulp.task('default', ['test', 'watch'])
