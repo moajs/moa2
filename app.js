@@ -24,11 +24,13 @@ app.use(json())
 app.use(serve(path.join(__dirname, 'public')))
 app.use(api())
 
+// for production
 if (process.env.NODE_ENV === 'production') {
   log4js.configure(path.join(__dirname, 'config/log4js.json'), { reloadSecs: 300 })
   app.use(log4js.koaLogger(log4js.getLogger('http'), { level: 'auto' }))
 }
 
+// for development
 if (process.env.NODE_ENV === 'development') {
   app.use(logger())
 
@@ -41,6 +43,11 @@ if (process.env.NODE_ENV === 'development') {
       console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
     })
   })
+}
+
+// for test
+if (process.env.NODE_ENV === 'test') {
+  
 }
 
 app.use(views(path.join(__dirname, 'app/views'), {
