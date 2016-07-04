@@ -47,7 +47,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // for test
 if (process.env.NODE_ENV === 'test') {
-  
+  console.log('test')
 }
 
 app.use(views(path.join(__dirname, 'app/views'), {
