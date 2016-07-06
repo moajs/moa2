@@ -41,8 +41,6 @@ if (process.env.NODE_ENV === 'production') {
   mountRoutes(app, path.join(__dirname, 'app/routes'), true)
 }
 
-// app.use(router.routes(), router.allowedMethods())
-
 // response
 app.on('error', function (err, ctx) {
   console.log(err)
