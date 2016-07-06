@@ -17,6 +17,7 @@ app.use($middlewares.json)
 app.use($middlewares.serve)
 app.use($middlewares.api)
 app.use($middlewares.views)
+app.use($middlewares.favicon)
 
 // for production
 if (process.env.NODE_ENV === 'production') {
