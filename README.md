@@ -31,12 +31,30 @@ write beautiful code by favoring convention over configuration.
 - [ ] 自带用户管理
 - [x] 使用jsonwebtoken做用户鉴权
 - [x] 支持migrate测试
-- [ ] 支持ava测试
+- [x] 支持ava测试
 - [x] 默认集成res.api，便于写接口
 - [x] 集成supervisor，代码变动，自动重载
 - [x] gulp自动监控文件变动，跑测试
 - [x] gulp routes生成路由说明
 - [x] 使用log4js记录日志
+
+## Env
+
+- production 产品模式，即部署到服务器上的
+- test 测试模式，辅助测试
+- development 开发模式，日志上会有差异
+
+举例
+
+```
+$ export NODE_ENV=production && ./node_modules/.bin/supervisor ./bin/www
+```
+
+or 
+
+```
+$ npm run production 
+```
 
 ## Getting Start
 
@@ -72,19 +90,19 @@ $ moag <model-name> name:string password:string -k
 - for koa 2 common function
 
 ```
-moag user name:string password:string -k
+$ moag user name:string password:string -k
 ```
 
 - for koa2 generator
 
 ```
-moag book name:string password:string -k -g
+$ moag book name:string password:string -k -g
 ```
 
 - for koa2 async/await
 
 ```
-moag cup name:string password:string -k -a
+$ moag cup name:string password:string -k -a
 ```
 
 ## 开启async/await
@@ -92,7 +110,7 @@ moag cup name:string password:string -k -a
 `async/await`需要babel，所以使用[runkoa](https://github.com/17koa/runkoa)可以暂时作为开发用，不建议产品环境使用。
 
 ```
-npm run async
+$ npm run async
 ```
 
 ## Moajs微信用户组
