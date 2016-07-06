@@ -17,6 +17,9 @@ const serve = require('koa-static')
 
 const app = new Koa()
 
+var $middlewares  = require('mount-middlewares')(__dirname);
+
+app.use($middlewares.compress)
 // middlewares
 app.use(bodyparser)
 app.use(json())
