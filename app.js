@@ -2,6 +2,7 @@
 
 require('./init')
 require('./db')
+require('./config/global')
 
 const path = require('path')
 const Koa = require('koa')
