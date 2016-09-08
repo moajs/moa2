@@ -2,18 +2,21 @@
   "name": "moa2",
   "version": "1.0.1",
   "private": false,
+  "main": "index.js",
   "description": "Koa web app framework",
   "scripts": {
     "start": "export NODE_ENV=development && ./node_modules/.bin/supervisor ./bin/www",
     "production": "export NODE_ENV=production && ./node_modules/.bin/supervisor ./bin/www",
     "development": "export NODE_ENV=development && ./node_modules/.bin/supervisor ./bin/www",
     "async": "./node_modules/.bin/supervisor ./bin/run",
-    "test": "standard && ./node_modules/.bin/ava -v"
+    "ava": "standard && ./node_modules/.bin/ava -v",
+    "test": "node test.js"
   },
   "dependencies": {
     "bluebird": "^2.9.34",
     "co": "^4.6.0",
     "debug": "^2.2.0",
+    "extend": "^3.0.0",
     "ioredis": "^1.9.1",
     "is": "^3.1.0",
     "jade": "^1.11.0",
