@@ -1,4 +1,4 @@
-app = require('./')()
+app = require('./')('./new_config','./config')
 
 // console.dir(app)
 

@@ -13,22 +13,26 @@ const app = new Koa()
 
 
 module.exports = function (config) {
-  console.log(config)
-  // middlewares
-  app.use($middlewares.compress)
-  app.use($middlewares.bodyparser)
-  app.use($middlewares.json)
-  app.use($middlewares.serve)
-  app.use($middlewares.api)
-  app.use($middlewares.views)
-  app.use($middlewares.favicon)
+  console.log('Configuration = ' + JSON.stringify(config, null, 4))
+  console.log('NODE_ENV = ' + process.env.NODE_ENV)
+
+  // middlewares  
+  config.middlewares.map(function (middleware) {
+    app.use($middlewares[middleware])
+  })
 
   // for production
   if (process.env.NODE_ENV === 'production') {
     app.use($middlewares.log4js())
 
-    // mount routes from app/routes folder
-    mountRoutes(app, path.join(__dirname, 'app/routes'), false)
+    config.routes.map(function (route) {
+      // mount routes from app/routes folder
+      if (route.path) {
+        mountRoutes(app, path.join(route.path, route.folder), false)
+      } else {
+        mountRoutes(app, path.join(__dirname, route.folder), false)
+      }
+    })
   } else if (process.env.NODE_ENV === 'test') {
     // for test
     console.log('test')
