@@ -19,7 +19,8 @@ module.exports = function (config) {
   
   extend(global.$middlewares, require('mount-middlewares')(config.home))
 
-  console.log( global.$middlewares)
+  console.log('global.$middlewares')
+  console.log(global.$middlewares)
 
   // middlewares  
   config.middlewares.map(function (middleware) {

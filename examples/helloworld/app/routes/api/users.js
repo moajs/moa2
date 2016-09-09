@@ -6,7 +6,7 @@ const co = require('co');
 // var res_api       = require('res.api');
 var $ = require('mount-controllers')(__dirname).users_controller;
 
-var $middlewares  = require('mount-middlewares')(__dirname);
+// var $middlewares  = require('mount-middlewares')(__dirname);
 
 // route define
 router.get('/', $middlewares.check_api_token, $.api.list);
