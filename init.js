@@ -4,7 +4,7 @@ require('./config/global')
 
 const fs = require('fs')
 const path = require('path')
-const logPath = path.join(__dirname, 'logs')
+const logPath = path.join($config.home, 'logs')
 
 /**
  * 创建log目录
