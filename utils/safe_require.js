@@ -1,4 +1,6 @@
-module.export = function safe_require (path) {
+const fs = require('fs')
+
+module.exports = function safe_require (path) {
   if (fs.existsSync(path)) {
     debug('safe_require ' + path + ' exist')
     require(path)
