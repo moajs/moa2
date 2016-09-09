@@ -1,9 +1,5 @@
 'use strict'
 
-require('./init')
-require('./db')
-require('./config/global')
-
 const path = require('path')
 const Koa = require('koa')
 const mountRoutes = require('mount-koa-routes')
@@ -15,6 +11,10 @@ const app = new Koa()
 module.exports = function (config) {
   console.log('Configuration = ' + JSON.stringify(config, null, 4))
   console.log('NODE_ENV = ' + process.env.NODE_ENV)
+  
+  require('./init')
+  require('./db')
+  require('./config/global')
 
   // middlewares  
   config.middlewares.map(function (middleware) {
@@ -38,7 +38,14 @@ module.exports = function (config) {
     console.log('test')
 
     // mount routes from app/routes folder
-    mountRoutes(app, path.join(__dirname, 'app/routes'), true)
+    config.routes.map(function (route) {
+      // mount routes from app/routes folder
+      if (route.path) {
+        mountRoutes(app, path.join(route.path, route.folder), true)
+      } else {
+        mountRoutes(app, path.join(__dirname, route.folder), true)
+      }
+    })
   } else {
     // default for development
     app.use($middlewares.logger)
@@ -47,7 +54,14 @@ module.exports = function (config) {
     app.use($middlewares.request_logger)
 
     // mount routes from app/routes folder
-    mountRoutes(app, path.join(__dirname, 'app/routes'), true)
+    config.routes.map(function (route) {
+      // mount routes from app/routes folder
+      if (route.path) {
+        mountRoutes(app, path.join(route.path, route.folder), true)
+      } else {
+        mountRoutes(app, path.join(__dirname, route.folder), true)
+      }
+    })
   }
 
   // response
