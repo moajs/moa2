@@ -2,12 +2,14 @@
 
 'use strict'
 
+var path = require('path')
+
 // 完成发货单，并生成对应账单
-require('../db.js')
+require('../../..')(path.join(__dirname, '../config'))
 
-var Test = require('../app/models/user')
+var User = $models.user
 
-Test.find({}, function (err, docs) {
+User.find({}, function (err, docs) {
   if (err) console.log(err)
   console.dir(docs)
   process.exit()
