@@ -6,11 +6,12 @@ const Koa = require('koa')
 const app = new Koa()
 const mountRoutes = require('mount-koa-routes')
 
-global.$middlewares = require('mount-middlewares')(__dirname)
+
 
 var current_path = process.cwd();
 
 module.exports = function (config) {
+  global.$config = config
   console.log('Configuration = ' + JSON.stringify(config, null, 4))
   console.log('NODE_ENV = ' + process.env.NODE_ENV)
   
@@ -18,6 +19,7 @@ module.exports = function (config) {
   require('./db')
   require('./config/global')
 
+  global.$middlewares = require('mount-middlewares')(__dirname)
   extend(global.$middlewares, require('mount-middlewares')(config.home))
 
   debug('global.$middlewares')
