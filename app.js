@@ -2,9 +2,6 @@
 
 const path = require('path')
 const Koa = require('koa')
-const mountRoutes = require('mount-koa-routes')
-const $middlewares = require('mount-middlewares')(__dirname)
-
 const app = new Koa()
 
 
@@ -16,11 +13,15 @@ module.exports = function (config) {
   require('./db')
   require('./config/global')
 
+  const mountRoutes = require('mount-koa-routes')
+  const $middlewares = require('mount-middlewares')(__dirname)
+
+
   // middlewares  
   config.middlewares.map(function (middleware) {
     app.use($middlewares[middleware])
   })
-
+  
   // for production
   if (process.env.NODE_ENV === 'production') {
     app.use($middlewares.log4js())
@@ -53,8 +54,10 @@ module.exports = function (config) {
     // request logger
     app.use($middlewares.request_logger)
 
+    console.log(config.routes)
     // mount routes from app/routes folder
     config.routes.map(function (route) {
+      console.log(path.join(route.path, route.folder))
       // mount routes from app/routes folder
       if (route.path) {
         mountRoutes(app, path.join(route.path, route.folder), true)

@@ -10,7 +10,7 @@ module.exports = {
   ],
   
   routes:[{
-    folder: 'app/routes'
+    // folder: 'app/routes'
   }]
 
 
