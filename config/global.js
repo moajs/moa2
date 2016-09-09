@@ -7,4 +7,6 @@ global.debug = require('debug')('moa2')
 global.safe_require = require('../utils/safe_require')
 
 
-global.router = require('koa-router')
+global.koa_router = function(){
+  return require('koa-router')()
+}

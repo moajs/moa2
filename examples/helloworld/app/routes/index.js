@@ -1,5 +1,5 @@
-var router = require('koa-router')();
 // var $middlewares  = require('mount-middlewares')(__dirname);
+var router = koa_router()
 
 router.get('/',  (ctx, next) => {
   console.log("../")

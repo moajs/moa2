@@ -1,7 +1,6 @@
 "use strict";
 
-var router = require('koa-router')();
-
+var router = koa_router()
 // var res_api       = require('res.api');
 var $ = $controllers.users_controller;
 
