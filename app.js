@@ -17,7 +17,7 @@ module.exports = function (config) {
   const mountRoutes = require('mount-koa-routes')
   global.$middlewares = require('mount-middlewares')(__dirname)
   
-  extend(global.$middlewares, require('mount-middlewares')(config.home)
+  extend(global.$middlewares, require('mount-middlewares')(config.home))
 
 
   // middlewares  
