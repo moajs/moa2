@@ -9,12 +9,13 @@ const app = new Koa()
 
 module.exports = function (config) {
   global.$config = config
-  console.log('Configuration = ' + JSON.stringify(config, null, 4))
-  console.log('NODE_ENV = ' + process.env.NODE_ENV)
   
   require('./init')
   require('./db')
   require('./config/global')
+  
+  debug('Configuration = ' + JSON.stringify(config, null, 4))
+  debug('NODE_ENV = ' + process.env.NODE_ENV)
   
   safe_require(path.join($config.home, './init'))
   safe_require(path.join($config.home, './db'))
@@ -45,7 +46,7 @@ module.exports = function (config) {
     })
   } else if (process.env.NODE_ENV === 'test') {
     // for test
-    console.log('test')
+    debug('test')
 
     // mount routes from app/routes folder
     config.routes.map(function (route) {
@@ -63,10 +64,10 @@ module.exports = function (config) {
     // request logger
     app.use($middlewares.request_logger)
 
-    console.log(config.routes)
+    debug(config.routes)
     // mount routes from app/routes folder
     config.routes.map(function (route) {
-      console.log(path.join(route.path, route.folder))
+      debug(path.join(route.path, route.folder))
       // mount routes from app/routes folder
       if (route.path) {
         mountRoutes(app, path.join(route.path, route.folder), true)
@@ -78,7 +79,7 @@ module.exports = function (config) {
 
   // response
   app.on('error', function (err, ctx) {
-    console.log(err)
+    debug(err)
   })
   
   app.start = app.listen
