@@ -1,6 +1,7 @@
 'use strict'
 
 const path = require('path')
+const extend = require('extend')
 const Koa = require('koa')
 const app = new Koa()
 
@@ -14,7 +15,9 @@ module.exports = function (config) {
   require('./config/global')
 
   const mountRoutes = require('mount-koa-routes')
-  const $middlewares = require('mount-middlewares')(__dirname)
+  global.$middlewares = require('mount-middlewares')(__dirname)
+  
+  extend(global.$middlewares, require('mount-middlewares')(config.home)
 
 
   // middlewares  

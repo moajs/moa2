@@ -1,6 +1,6 @@
 'use strict'
 
-const extend = require('extend');
+const extend = require('extend')
 
 
 var conf = {}
