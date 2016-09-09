@@ -3,8 +3,6 @@
 /**
  * Created by Moajs on June 8th 2016, 8:57:06 pm.
  */
- 
-var $models = require('mount-models')(__dirname);
 
 var User = $models.user;
 

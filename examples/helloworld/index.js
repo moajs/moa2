@@ -1,5 +1,6 @@
 var app = require('../../')(__dirname + '/config')
 
-console.dir(global.$middlewares)
+debug($config)
+debug($middlewares)
 
 app.start(4000);

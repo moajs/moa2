@@ -26,7 +26,17 @@ module.exports = function (config) {
 
   debug('global.$middlewares')
   debug(global.$middlewares)
+  
+  global.$models = require('mount-models')($config.home + '/');
 
+  debug('global.$models')
+  debug(global.$models)
+  
+  global.$controllers = require('mount-controllers')($config.home + '/app/');
+
+  debug('global.$controllers')
+  debug(global.$controllers)
+  
   // middlewares  
   config.middlewares.map(function (middleware) {
     app.use($middlewares[middleware])
