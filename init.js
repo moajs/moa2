@@ -1,6 +1,6 @@
 'use strict'
 
-require('./config/log.js')
+require('./config/global')
 
 const fs = require('fs')
 const path = require('path')
