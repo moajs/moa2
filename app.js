@@ -4,7 +4,11 @@ const path = require('path')
 const extend = require('extend')
 const Koa = require('koa')
 const app = new Koa()
+const mountRoutes = require('mount-koa-routes')
 
+global.$middlewares = require('mount-middlewares')(__dirname)
+
+var current_path = process.cwd();
 
 module.exports = function (config) {
   console.log('Configuration = ' + JSON.stringify(config, null, 4))
@@ -14,9 +18,6 @@ module.exports = function (config) {
   require('./db')
   require('./config/global')
 
-  const mountRoutes = require('mount-koa-routes')
-  global.$middlewares = require('mount-middlewares')(__dirname)
-  
   extend(global.$middlewares, require('mount-middlewares')(config.home))
 
   console.log('global.$middlewares')
