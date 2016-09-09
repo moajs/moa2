@@ -1,14 +1,13 @@
 'use strict'
 
+const fs = require('fs')
 const path = require('path')
 const extend = require('extend')
-const Koa = require('koa')
-const app = new Koa()
 const mountRoutes = require('mount-koa-routes')
+const Koa = require('koa')
+var safe_require = ('./utils/safe_require')
 
-
-
-var current_path = process.cwd();
+const app = new Koa()
 
 module.exports = function (config) {
   global.$config = config
@@ -16,8 +15,11 @@ module.exports = function (config) {
   console.log('NODE_ENV = ' + process.env.NODE_ENV)
   
   require('./init')
+  safe_require($config.home + '/init')
   require('./db')
+  safe_require($config.home + '/db')
   require('./config/global')
+  safe_require($config.home + '/config/global')
 
   global.$middlewares = require('mount-middlewares')(__dirname)
   extend(global.$middlewares, require('mount-middlewares')(config.home))
