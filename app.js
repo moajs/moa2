@@ -14,6 +14,10 @@ module.exports = function (config) {
   require('./db')
   require('./config/global')
   
+  if(process.env.NODE_ENV === undefined){
+    process.env.NODE_ENV = 'development'
+  }
+  
   debug('Configuration = ' + JSON.stringify(config, null, 4))
   debug('NODE_ENV = ' + process.env.NODE_ENV)
   
