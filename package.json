@@ -33,6 +33,7 @@
     "koa-views": "^5.0.1",
     "koa.res.api": "^2.0.0",
     "kp": "^1.1.0",
+    "load_koa_middlewares_with_key": "^1.0.4",
     "log1": "^1.0.7",
     "mongoose": "4.0.5",
     "mongoosedao": "^2.0.2",

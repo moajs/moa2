@@ -14,7 +14,17 @@ module.exports = function (config) {
   require('./db')
   require('./config/global')
   
-  if(process.env.NODE_ENV === undefined){
+  // $models
+  global.$models = require('mount-models')($config.home + '/');
+
+  debug('global.$models')
+  debug(global.$models)
+  
+  if ($config.db_debug === true) {
+    return;
+  }
+  
+  if (process.env.NODE_ENV === undefined) {
     process.env.NODE_ENV = 'development'
   }
   
@@ -25,23 +35,20 @@ module.exports = function (config) {
   safe_require(path.join($config.home, './db'))
   safe_require(path.join($config.home, './config/global'))
 
+  // $middlewares
   global.$middlewares = require('mount-middlewares')(__dirname)
   extend(global.$middlewares, require('mount-middlewares')(config.home))
 
   debug('global.$middlewares')
   debug(global.$middlewares)
   
-  global.$models = require('mount-models')($config.home + '/');
-
-  debug('global.$models')
-  debug(global.$models)
-  
+  // $controllers
   global.$controllers = require('mount-controllers')($config.home + '/app/');
 
   debug('global.$controllers')
   debug(global.$controllers)
   
-  // middlewares  
+  // mount global middlewares  
   config.middlewares.map(function (middleware) {
     app.use($middlewares[middleware])
   })

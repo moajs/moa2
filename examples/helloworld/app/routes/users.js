@@ -1,5 +1,7 @@
 "use strict";
 var router = koa_router()
+
+console.log($controllers)
 // core controller
 var $ = $controllers.users_controller;
 
