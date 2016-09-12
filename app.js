@@ -44,7 +44,11 @@ module.exports = function (config) {
   debug('global.$middlewares')
   debug(config.middlewares.global)
   
-  global.$global_middlewares = config.middlewares['global']
+  global.$global_middlewares = []
+  
+  if (config.middlewares['global']) {
+    global.$global_middlewares = config.middlewares['global']
+  }
 
   delete config.middlewares['global']
   
