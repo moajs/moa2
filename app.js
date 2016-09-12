@@ -7,6 +7,8 @@ const Koa = require('koa')
 
 const app = new Koa()
 
+global.debug = require('debug')('moa2')
+
 module.exports = function (config) {
   global.$config = config
   
@@ -42,7 +44,7 @@ module.exports = function (config) {
   debug('global.$middlewares')
   debug(global.$middlewares)
   
-  console.log(global.$middlewares)
+  debug(global.$middlewares)
   
   // $controllers
   global.$controllers = require('mount-controllers')($config.home + '/app/');
@@ -54,28 +56,26 @@ module.exports = function (config) {
   // $middlewares.push(require('get_koa_middlewares_with_config')(config.declared_middlewares))
   // mount global middlewares  
   
-  console.log(config.middlewares.global)
+  debug(config.middlewares.global)
   
   global.$global_middlewares = config.middlewares['global']
 
   delete config.middlewares['global']
-  console.log(global.$middlewares)
-  console.log('config')
+  debug(global.$middlewares)
   // load_koa_middlewares with configuration
   var configed_middlewares = require('get_koa_middlewares_object_with_config')(config.middlewares)
-  console.log(configed_middlewares)
-  // app.use(require('load_koa_middlewares')(config.declared_middlewares))
   
   for (var key in configed_middlewares) {
     global.$middlewares[key] = configed_middlewares[key]
   }
   
   $global_middlewares.map(function (middleware) {
-    console.dir($middlewares[middleware])
+    debug('mount global middleware with ' + middleware + ':' +$middlewares[middleware])
     app.use($middlewares[middleware])
   })
   
-  console.log(global.$middlewares)
+  debug(global.$middlewares)
+  
   // for production
   if (process.env.NODE_ENV === 'production') {
     app.use($middlewares.log4js())
