@@ -91,4 +91,7 @@ module.exports = bodyparser()
 ## $global_middlewares
 
 存放所有全局使用的中间件
- 
+
+## 默认加载project目录下的app/middlewares目录
+
+这样约定也是比较方便的

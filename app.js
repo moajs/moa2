@@ -42,30 +42,17 @@ module.exports = function (config) {
   extend(global.$middlewares, require('mount-middlewares')(config.home))
 
   debug('global.$middlewares')
-  debug(global.$middlewares)
-  
-  debug(global.$middlewares)
-  
-  // $controllers
-  global.$controllers = require('mount-controllers')($config.home + '/app/');
-
-  debug('global.$controllers')
-  debug(global.$controllers)
-  
-  
-  // $middlewares.push(require('get_koa_middlewares_with_config')(config.declared_middlewares))
-  // mount global middlewares  
-  
   debug(config.middlewares.global)
   
   global.$global_middlewares = config.middlewares['global']
 
   delete config.middlewares['global']
+  
   debug(global.$middlewares)
   // load_koa_middlewares with configuration
-  var configed_middlewares = require('get_koa_middlewares_object_with_config')(config.middlewares)
+  let configed_middlewares = require('get_koa_middlewares_object_with_config')(config.middlewares)
   
-  for (var key in configed_middlewares) {
+  for (let key in configed_middlewares) {
     global.$middlewares[key] = configed_middlewares[key]
   }
   
@@ -76,6 +63,14 @@ module.exports = function (config) {
   
   debug(global.$middlewares)
   
+  
+  // $controllers
+  global.$controllers = require('mount-controllers')($config.home + '/app/');
+
+  debug('global.$controllers')
+  debug(global.$controllers)
+  
+ 
   // for production
   if (process.env.NODE_ENV === 'production') {
     app.use($middlewares.log4js())
