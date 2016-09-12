@@ -30,9 +30,6 @@ with mongo
 ## Features
 
 - [x] 自动加载路由
-- [x] 支持mongodb配置
-- [x] 集成mongoosedao，快速写crud等dao接口
-- [ ] 自带用户管理
 - [x] 使用jsonwebtoken做用户鉴权
 - [x] 支持migrate测试
 - [x] 支持ava测试
@@ -41,6 +38,11 @@ with mongo
 - [x] gulp自动监控文件变动，跑测试
 - [x] gulp routes生成路由说明
 - [x] 使用log4js记录日志
+
+
+- [x] 支持mongodb配置
+- [x] 集成mongoosedao，快速写crud等dao接口
+- [ ] 自带用户管理
 
 ## Env
 
