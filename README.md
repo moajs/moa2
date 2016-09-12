@@ -14,14 +14,18 @@ write beautiful code by favoring convention over configuration.
 
 > "Lost, like the Moa is lost" - Maori proverb
 
-
 ## 技术栈
 
+core
+
 - [koa2](https://github.com/koajs/koa/tree/v2.x)
-- [mongoose](https://github.com/Automattic/mongoose)
 - [bluebird](https://github.com/petkaantonov/bluebird)
 - [koa.res.api](https://github.com/moajs/koa.res.api)
 - [mount-koa-routes](https://github.com/moajs/mount-koa-routes)
+
+with mongo
+
+- [mongoose](https://github.com/Automattic/mongoose)
 
 ## Features
 
