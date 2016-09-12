@@ -1,6 +1,6 @@
 {
   "name": "moa2",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": false,
   "main": "index.js",
   "description": "Koa web app framework",
