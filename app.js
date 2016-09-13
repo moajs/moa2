@@ -42,15 +42,7 @@ module.exports = function (config) {
   console.log('build-in middlewares = ' )
   debug($middlewares)
   
-  let build_ins = [
-      'compress',
-      'bodyparser',
-      'json',
-      'serve',
-      'api',
-      'views',
-      'favicon'
-  ]
+  let build_ins = config.build_ins;
   
   for (let i in build_ins) {
       var default_middleware = build_ins[i]

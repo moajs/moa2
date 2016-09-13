@@ -1,5 +1,14 @@
 module.exports = {  
   // db_debug: true,
+  build_ins:[
+    'compress',
+    'bodyparser',
+    'json',
+    'serve',
+    'api',
+    'views',
+    'favicon'
+  ],
   middlewares: {
     "koa-favicon": {
       "path": "sss",
