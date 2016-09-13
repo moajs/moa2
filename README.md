@@ -16,6 +16,8 @@ write beautiful code by favoring convention over configuration.
 
 ## 技术栈
 
+![](doc/core.png)
+
 core
 
 - [koa2](https://github.com/koajs/koa/tree/v2.x)
