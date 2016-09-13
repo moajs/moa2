@@ -8,6 +8,7 @@ module.exports = {
     'api',
     'views',
     'favicon'
+    // ,'log4js'
   ],
   middlewares: {
     "koa-favicon": {
