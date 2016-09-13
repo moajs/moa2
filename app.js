@@ -39,10 +39,30 @@ module.exports = function (config) {
 
   // $middlewares
   global.$middlewares = require('mount-middlewares')(__dirname)
+  console.log('build-in middlewares = ' )
+  debug($middlewares)
+  
+  let build_ins = [
+      'compress',
+      'bodyparser',
+      'json',
+      'serve',
+      'api',
+      'views',
+      'favicon'
+  ]
+  
+  for (let i in build_ins) {
+      var default_middleware = build_ins[i]
+      debug('mount build-in global middleware with ' + default_middleware )
+      //+ ':' + $middlewares[default_middleware]
+      
+      app.use($middlewares[default_middleware])
+  }
+  
   extend(global.$middlewares, require('mount-middlewares')(config.home))
 
-  debug('global.$middlewares')
-  debug(config.middlewares.global)
+  console.dir('global.$middlewares' + config.middlewares.global)
   
   global.$global_middlewares = []
   
@@ -52,7 +72,6 @@ module.exports = function (config) {
 
   delete config.middlewares['global']
   
-  debug(global.$middlewares)
   // load_koa_middlewares with configuration
   let configed_middlewares = require('get_koa_middlewares_object_with_config')(config.middlewares)
   
@@ -60,13 +79,10 @@ module.exports = function (config) {
     global.$middlewares[key] = configed_middlewares[key]
   }
   
-  $global_middlewares.map(function (middleware) {
+  $global_middlewares.forEach(function (middleware) {
     debug('mount global middleware with ' + middleware + ':' +$middlewares[middleware])
     app.use($middlewares[middleware])
   })
-  
-  debug(global.$middlewares)
-  
   
   // $controllers
   global.$controllers = require('mount-controllers')($config.home + '/app/');
