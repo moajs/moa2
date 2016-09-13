@@ -13,7 +13,7 @@ module.exports = function (config) {
   global.$config = config
   
   require('./init')
-  require('./db')
+  // require('./db') move db.js to project
   require('./config/global')
   
   // $models
