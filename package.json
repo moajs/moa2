@@ -18,8 +18,6 @@
     "debug": "^2.2.0",
     "extend": "^3.0.0",
     "get_koa_middlewares_object_with_config": "^1.0.4",
-    "get_koa_middlewares_with_config": "^1.0.3",
-    "ioredis": "^1.9.1",
     "is": "^3.1.0",
     "jade": "^1.11.0",
     "jsonwebtoken": "^5.0.4",
@@ -35,18 +33,14 @@
     "koa-views": "^5.0.1",
     "koa.res.api": "^2.0.0",
     "kp": "^1.1.0",
-    "load_koa_middlewares_with_key": "^1.0.4",
     "log1": "^1.0.7",
-    "mongoose": "4.0.5",
-    "mongoosedao": "^2.0.2",
     "morgan": "~1.6.1",
     "mount-controllers": "^1.0.7",
     "mount-koa-routes": "^2.0.1",
     "mount-middlewares": "^1.0.7",
     "mount-models": "^1.0.8",
     "mount-services": "^1.0.7",
-    "msgpack5": "^3.1.0",
-    "runkoa": "^1.5.2"
+    "msgpack5": "^3.1.0"
   },
   "devDependencies": {
     "ava": "^0.15.2",
