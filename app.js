@@ -72,7 +72,7 @@ module.exports = function (config) {
   }
   
   $global_middlewares.forEach(function (middleware) {
-    debug('mount global middleware with ' + middleware + ':' +$middlewares[middleware])
+    debug('mount global middleware with ' + middleware)
     app.use($middlewares[middleware])
   })
   
