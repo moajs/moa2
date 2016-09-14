@@ -25,9 +25,10 @@ core
 - [koa.res.api](https://github.com/moajs/koa.res.api)
 - [mount-koa-routes](https://github.com/moajs/mount-koa-routes)
 
-with mongo
+with database
 
-- [mongoose](https://github.com/Automattic/mongoose)
+- [rdbms use sequelize](https://github.com/moajs/moa2-sequelize)
+- [mongo use mongoose](https://github.com/moajs/moa2-mongo)
 
 ## Features
 
