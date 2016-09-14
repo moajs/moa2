@@ -29,6 +29,7 @@ with database
 
 - [rdbms use sequelize](https://github.com/moajs/moa2-sequelize)
 - [mongo use mongoose](https://github.com/moajs/moa2-mongo)
+- [mysql use toshihiko](https://github.com/moajs/moa2-toshihiko)
 
 ## Features
 
