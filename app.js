@@ -7,6 +7,8 @@ const Koa = require('koa')
 
 const app = new Koa()
 
+const env = process.env.NODE_ENV || "development"
+
 global.debug = require('debug')('moa2')
 
 module.exports = function (config) {
@@ -26,12 +28,8 @@ module.exports = function (config) {
     return;
   }
   
-  if (process.env.NODE_ENV === undefined) {
-    process.env.NODE_ENV = 'development'
-  }
-  
   debug('Configuration = ' + JSON.stringify(config, null, 4))
-  debug('NODE_ENV = ' + process.env.NODE_ENV)
+  debug('NODE_ENV = ' + env)
   
   safe_require(path.join($config.home, './init'))
   safe_require(path.join($config.home, './db'))
@@ -84,7 +82,7 @@ module.exports = function (config) {
   
  
   // for production
-  if (process.env.NODE_ENV === 'production') {
+  if (env === 'production') {
     app.use($middlewares.log4js())
 
     config.routes.map(function (route) {
@@ -95,7 +93,7 @@ module.exports = function (config) {
         mountRoutes(app, path.join(__dirname, route.folder), false)
       }
     })
-  } else if (process.env.NODE_ENV === 'test') {
+  } else if (env === 'test') {
     // for test
     debug('test')
 
