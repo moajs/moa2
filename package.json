@@ -49,8 +49,7 @@
     "sinon": "^1.11.1",
     "standard": "*",
     "superkoa": "^1.0.0",
-    "supervisor": "^0.7.1",
-    "zombie": "^2.1.1"
+    "supervisor": "^0.7.1"
   },
   "license": "MIT",
   "repository": "moajs/moa2",
